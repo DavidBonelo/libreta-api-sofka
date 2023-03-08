@@ -25,7 +25,7 @@ public class Contacto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer cnt_id;
+    private Integer id;
 
 
     /**
