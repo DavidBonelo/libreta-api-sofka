@@ -12,6 +12,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.FetchType;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
@@ -42,12 +44,14 @@ public class Telefono {
     /**
      * Fecha y hora en que la tupla ha sido creada
      */
+    @CreationTimestamp
     @Column(name = "tel_created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
     /**
      * Fecha y hora en que la tupla ha sido actualizada por última vez
      */
+    @UpdateTimestamp
     @Column(name = "tel_updated_at")
     private Instant updatedAt;
 }

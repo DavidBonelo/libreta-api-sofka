@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -43,12 +45,16 @@ public class Contacto {
     /**
      * Fecha y hora en que la tupla ha sido creada
      */
+//    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     @Column(name = "cnt_created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
     /**
      * Fecha y hora en que la tupla ha sido actualizada por última vez
      */
+//    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     @Column(name = "cnt_updated_at")
     private Instant updatedAt;
 

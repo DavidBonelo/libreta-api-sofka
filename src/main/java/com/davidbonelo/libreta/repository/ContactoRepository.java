@@ -52,7 +52,8 @@ public interface ContactoRepository extends JpaRepository<Contacto, Integer> {
      * @param nombre Nuevo nombre del contacto
      */
     @Modifying
-    @Query(value = "update Contacto cnt set cnt.nombre = :nombre, cnt.updatedAt = CURRENT_TIMESTAMP where cnt.id = :id")
+//    @Query(value = "update Contacto cnt set cnt.nombre = :nombre, cnt.updatedAt = CURRENT_TIMESTAMP where cnt.id = :id")
+    @Query(value = "update Contacto cnt set cnt.nombre = :nombre where cnt.id = :id")
     public void updateNombre(@Param(value = "id") Integer id, @Param(value = "nombre") String nombre);
 
     /**
@@ -62,6 +63,7 @@ public interface ContactoRepository extends JpaRepository<Contacto, Integer> {
      * @param apellido Nuevo apellido del contacto
      */
     @Modifying
-    @Query(value = "update Contacto cnt set cnt.apellido = :apellido, cnt.updatedAt = CURRENT_TIMESTAMP where cnt.id = :id")
+//    @Query(value = "update Contacto cnt set cnt.apellido = :apellido, cnt.updatedAt = CURRENT_TIMESTAMP where cnt.id = :id")
+    @Query(value = "update Contacto cnt set cnt.apellido = :apellido where cnt.id = :id")
     public void updateApellido(@Param(value = "id") Integer id, @Param(value = "apellido") String apellido);
 }
