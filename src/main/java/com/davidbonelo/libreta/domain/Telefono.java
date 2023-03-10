@@ -21,8 +21,8 @@ import java.time.Instant;
 @Table(name = "telefono")
 public class Telefono {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tel_id", nullable = false)
     private Integer id;
 
     /**

@@ -24,7 +24,7 @@ import java.util.List;
 public class Contacto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "cnt_id", nullable = false)
     private Integer id;
 
 
@@ -55,12 +55,8 @@ public class Contacto {
     /**
      * Punto de enlace entre la entidad del Contacto y Teléfono (un contacto puede tener muchos números de teléfono)
      */
-    @OneToMany(
-            fetch = FetchType.EAGER,
-            targetEntity = Telefono.class,
-            cascade = CascadeType.REMOVE,
-            mappedBy = "contacto"
-    )
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Telefono.class, cascade = CascadeType.REMOVE, mappedBy =
+            "contacto")
     @JsonManagedReference
     private List<Telefono> telefonos = new ArrayList<>();
 
