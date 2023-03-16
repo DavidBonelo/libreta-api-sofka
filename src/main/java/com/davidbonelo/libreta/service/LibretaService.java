@@ -122,8 +122,14 @@ public class LibretaService implements ILibreta {
     @Transactional
     public Contacto updateNombre(Integer id, Contacto contacto) {
         contacto.setId(id);
-        contacto.setUpdatedAt(Instant.now());
-        contactoRepository.updateNombre(id, contacto.getNombre());
+        var contact = contactoRepository.findById(id);
+        if (contact.isPresent()) {
+            var foundContact = contact.get();
+            foundContact.setUpdatedAt(Instant.now());
+            foundContact.setNombre(contacto.getNombre());
+            return contactoRepository.save(foundContact);
+        }
+//        contactoRepository.updateNombre(id, contacto.getNombre());
         return contacto;
     }
 
@@ -138,8 +144,14 @@ public class LibretaService implements ILibreta {
     @Transactional
     public Contacto updateApellidos(Integer id, Contacto contacto) {
         contacto.setId(id);
-        contacto.setUpdatedAt(Instant.now());
-        contactoRepository.updateApellido(id, contacto.getApellido());
+        var contact = contactoRepository.findById(id);
+        if (contact.isPresent()) {
+            var foundContact = contact.get();
+            foundContact.setUpdatedAt(Instant.now());
+            foundContact.setApellido(contacto.getApellido());
+            return contactoRepository.save(foundContact);
+        }
+//        contactoRepository.updateApellido(id, contacto.getApellido());
         return contacto;
     }
 
@@ -170,8 +182,14 @@ public class LibretaService implements ILibreta {
     @Transactional
     public Telefono updateOnlyTelefono(Integer id, Telefono telefono) {
         telefono.setId(id);
-        telefono.setUpdatedAt(Instant.now());
-        telefonoRepository.updateTelefono(id, telefono.getTelefono());
+        var phone = telefonoRepository.findById(id);
+        if (phone.isPresent()) {
+            var foundPhone = phone.get();
+            foundPhone.setUpdatedAt(Instant.now());
+            foundPhone.setTelefono(telefono.getTelefono());
+            return telefonoRepository.save(foundPhone);
+        }
+//        telefonoRepository.updateTelefono(id, telefono.getTelefono());
         return telefono;
     }
 
