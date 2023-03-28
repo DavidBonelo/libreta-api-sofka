@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @Slf4j
+@CrossOrigin
 @RestController
 public class LibretaController {
     private final Response response = new Response();
@@ -185,6 +186,7 @@ public class LibretaController {
      * @param id       Identificador del contacto a actualizar
      * @return Objeto Response en formato JSON
      */
+
     @PatchMapping(path = "api/v1/contact/{id}/name")
     public ResponseEntity<Response> updateNombreFromContacto(@PathVariable(value = "id") Integer id,
                                                              @RequestBody Contacto contacto) {
