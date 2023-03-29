@@ -6,7 +6,8 @@ cnt_id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
 cnt_nombre VARCHAR(100) NOT NULL,
 cnt_apellido VARCHAR(100) NOT NULL,
 cnt_created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-cnt_updated_at DATETIME NULL
+cnt_updated_at DATETIME NULL,
+cnt_deleted BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /* Add Indexes */
 CREATE INDEX contacto_cnt_apellido_Idx ON contacto (cnt_apellido) USING BTREE;

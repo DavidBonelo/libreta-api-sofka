@@ -1,19 +1,21 @@
 package com.davidbonelo.libreta.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+
+@SQLDelete(sql = "UPDATE contacto SET cnt_deleted = true WHERE cnt_id=?") //overrides delete for softDelete.
+@Where(clause = "cnt_deleted=false") // filters deleted elements when reading.
 @Table(name = "contacto")
 public class Contacto {
     @Id
@@ -66,4 +71,6 @@ public class Contacto {
     @JsonManagedReference
     private List<Telefono> telefonos = new ArrayList<>();
 
+    @Column(name = "cnt_deleted")
+    private boolean deleted = false;
 }
