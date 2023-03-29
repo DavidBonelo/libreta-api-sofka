@@ -18,6 +18,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.Where;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,18 @@ public class Contacto {
      */
     @Column(name = "cnt_apellido", nullable = false, length = 100)
     private String apellido;
+
+    /**
+     * Correo electrónico del contacto
+     */
+    @Column(name = "cnt_email", nullable = false, length = 100)
+    private String email;
+
+    /**
+     * Fecha de nacimiento del contacto
+     */
+    @Column(name = "cnt_fecha_nacimiento", nullable = false)
+    private LocalDate fechaNacimiento;
 
     /**
      * Fecha y hora en que la tupla ha sido creada
