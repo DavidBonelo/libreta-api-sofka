@@ -12,7 +12,6 @@ cnt_deleted BOOLEAN
 /* Add Indexes */
 CREATE INDEX contacto_cnt_apellido_Idx ON contacto (cnt_apellido) USING BTREE;
 CREATE INDEX contacto_cnt_nombre_Idx ON contacto (cnt_nombre) USING BTREE;
-CREATE UNIQUE INDEX contacto_cnt_nombre_cnt_apellido_Idx ON contacto (cnt_nombre, cnt_apellido) USING BTREE;
 /******************** Add Table: telefono ************************/
 /* Build Table Structure */
 CREATE TABLE telefono
